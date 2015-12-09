@@ -28,3 +28,11 @@
   content: "";
   padding: 0;
 }
+
+.white-button {
+    color: white;
+}
+
+.first-header-button {
+    margin-left: 25px;
+}

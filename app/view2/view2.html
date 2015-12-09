@@ -1,5 +1,19 @@
-<p>This is the partial for view 2.</p>
-<p>
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
-</p>
+<div class="md-padding">
+    <div>
+        <h1 class="md-title">Personne {{$index}}</h1>
+        <div layout="column">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Nom</label>
+                <input ng-model="currentUser.name">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Mail</label>
+                <input ng-model="currentUser.mail">
+            </md-input-container>
+            <div layout="row">
+                <md-button type="submit" class="md-raised md-primary" ng-click="submit()">Valider</md-button>
+                <md-button class="md-raised" ng-click="resetForm()">Effacer</md-button>
+            </div>
+        </div>
+    </div>
+</div>
