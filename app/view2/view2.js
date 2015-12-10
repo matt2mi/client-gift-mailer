@@ -10,17 +10,23 @@ angular.module('myApp.view2', ['ngRoute'])
 }])
 
 .controller('View2Ctrl', ['$scope','$http', function($scope, $http) {
-    $scope.users = [
-        {
-            name: '',
-            mail: ''
-        }
-    ];
-    $scope.currentUser = {
-        name: '',
-        mail: ''
-    };
+    $scope.users = [];
+    $scope.currentUser = {};
+    $scope.newUser = false;
 
+
+    $scope.addNewUser = function() {
+        $scope.newUser = true;
+    };
+    $scope.addUser = function() {
+        $scope.users.push(angular.copy($scope.currentUser));
+        $scope.resetForm();
+        $scope.newUser = false;
+    };
+    $scope.resetForm = function() {
+        $scope.currentUser.name = '';
+        $scope.currentUser.mail = '';
+    };
     $scope.submit = function() {
         $http.post('/email', $scope.users)
             .then(function() {
@@ -29,10 +35,5 @@ angular.module('myApp.view2', ['ngRoute'])
             }, function() {
                 console.log('error');
             });
-    };
-
-    $scope.resetForm = function() {
-        $scope.currentUser.name = '';
-        $scope.currentUser.mail = '';
     };
 }]);
